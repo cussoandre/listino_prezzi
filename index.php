@@ -38,7 +38,7 @@
     {
       echo "<tr>";
       
-      echo "<td>" . $row['category'] . "</td>";
+      echo '<td> <a href="/' . $row['category'] . '">' . $row['category'] . '</td>';
       
       echo "</tr>";
     }
