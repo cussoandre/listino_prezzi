@@ -14,7 +14,7 @@
   <p><?php echo "Hello Mond!";?></p>
   <?php 
     $con = mysqli_connect("127.0.0.1:3306","adminbNNmtdG","fkBtFscRAGRI","mysql");
-    $getTable = "SELECT * FROM listino"
+    $getTable = "SELECT * FROM listino";
     if (mysqli_connect_errno()) 
     {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
