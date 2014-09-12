@@ -13,7 +13,7 @@
   <h1>This friendly php will help you!</h1>
   <p><?php echo "Hello Mond!";?></p>
   <?php 
-    $con = mysqli_connect("127.0.0.1:3306","adminbNNmtdG","fkBtFscRAGRI","mysql");
+    $con = mysqli_connect("127.9.180.130:3306","adminbNNmtdG","fkBtFscRAGRI","mysql");
     $getTable = "SELECT * FROM listino";
     if (mysqli_connect_errno()) 
     {
