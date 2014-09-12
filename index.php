@@ -25,16 +25,12 @@
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    $result = mysqli_query($con,"SELECT * FROM listino");
+    $result = mysqli_query($con,"SELECT DISTINCT category FROM listino");
     
     echo "<table border='1'>
     <tr>
     
       <th>Categoria</th>
-      <th>Sezione</th>
-      <th>Prodotto</th>
-      <th>Prezzo</th>
-      <th>Disponibilità</th>
     
     </tr>";
     
@@ -43,10 +39,6 @@
       echo "<tr>";
       
       echo "<td>" . $row['category'] . "</td>";
-      echo "<td>" . $row['section'] . "</td>";
-      echo "<td>" . $row['product'] . "</td>";
-      echo "<td>" . $row['price'] . "</td>";
-      echo "<td>" . $row['available'] . "</td>";
       
       echo "</tr>";
     }
