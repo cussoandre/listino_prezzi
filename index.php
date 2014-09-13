@@ -15,10 +15,10 @@
   <?php
     $sub = 'category';
     
-    if ($_GET['sub'] != null)
+   /* if ($_GET['sub'] != null)
     {
       $sub = $_GET['sub'];
-    }
+    }*/
     
     generateTable ($sub);
   
@@ -36,7 +36,7 @@
 
     function generateTable ($which)
     {
-      $query = ('SELECT DISTINCT ' . mysql_real_escape_string($which) . ' FROM listino');
+      $query = ('SELECT DISTINCT ' . $which . ' FROM listino');
       echo $query;
       $result = mysqli_query($con, $query);
       
