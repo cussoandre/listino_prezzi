@@ -15,10 +15,10 @@
   <?php
     $sub = 'category';
     
-   /* if ($_GET['sub'] != null)
+   if ($_GET['sub'] != null)
     {
       $sub = $_GET['sub'];
-    }*/
+    }
     
     generateTable ($sub);
   
