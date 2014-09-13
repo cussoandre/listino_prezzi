@@ -12,7 +12,18 @@
 <body>
   <h1>This friendly php will help you!</h1>
   <p><?php echo "Hello Mond!";?></p>
-  <?php 
+  <?php
+  
+    if ($_GET['sub'] != 0)
+    {
+      generateTable ($_GET['sub']);
+    }
+    
+    else
+    {
+      generateTable ('category');
+    }
+  
     $con = mysqli_connect("127.9.180.130:3306","adminbNNmtdG","fkBtFscRAGRI","mysql");
     $getTable = "SELECT * FROM listino";
     if (mysqli_connect_errno()) 
@@ -25,25 +36,28 @@
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    $result = mysqli_query($con,"SELECT DISTINCT category FROM listino");
-    
-    echo "<table border='1'>
-    <tr>
-    
-      <th>Categoria</th>
-    
-    </tr>";
-    
-    while($row = mysqli_fetch_array($result)) 
+    function generateTable ($which)
     {
-      echo "<tr>";
+      $result = mysqli_query($con,'SELECT DISTINCT category FROM ' . $which);
       
-      echo '<td> <a href="'. $_SERVER["PHP_SELF"] . '?sub=' . $row['category'] . '">' . $row['category'] . '</td>';
+      echo '<table border="1">
+      <tr>
       
-      echo "</tr>";
+        <th>' . $which . '</th>
+      
+      </tr>';
+      
+      while($row = mysqli_fetch_array($result)) 
+      {
+        echo "<tr>";
+        
+        echo '<td> <a href="'. $_SERVER["PHP_SELF"] . '?sub=' . $row[$which] . '">' . $row[$which] . '</td>';
+        
+        echo "</tr>";
+      }
+      
+      echo "</table>";
     }
-    
-    echo "</table>";
     
     mysqli_close($con);
   ?>
