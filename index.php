@@ -51,7 +51,7 @@
       {
         echo "<tr>";
         
-        echo '<td> <a href="'. $_SERVER["PHP_SELF"] . '?sub=' . $row[$which] . '">' . $row[$which] . '</td>';
+        echo '<td> <a href="'. $_SERVER["PHP_SELF"] . '?sub=' . $row['' . $which . ''] . '">' . $row['' . $which . ''] . '</td>';
         
         echo "</tr>";
       }
