@@ -38,7 +38,7 @@
 
     function generateTable ($which)
     {
-      $result = mysqli_query($con,'SELECT DISTINCT' . $which . ' FROM listino');
+      $result = mysqli_query($con,'SELECT DISTINCT ' . mysql_real_escape_string($which) . ' FROM listino');
       
       echo '<table border="1">
       <tr>
