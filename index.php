@@ -13,16 +13,14 @@
   <h1>This friendly php will help you!</h1>
   <p><?php echo "Hello Mond!";?></p>
   <?php
-  
-    if ($_GET['sub'] != 0)
+    $sub = 'category';
+    
+    if ($_GET['sub'] != null)
     {
-      generateTable ($_GET['sub']);
+      $sub = $_GET['sub'];
     }
     
-    else
-    {
-      generateTable ('category');
-    }
+    generateTable ($sub);
   
     $con = mysqli_connect("127.9.180.130:3306","adminbNNmtdG","fkBtFscRAGRI","mysql");
     $getTable = "SELECT * FROM listino";
@@ -38,7 +36,9 @@
 
     function generateTable ($which)
     {
-      $result = mysqli_query($con,'SELECT DISTINCT ' . mysql_real_escape_string($which) . ' FROM listino');
+      $query = ('SELECT DISTINCT ' . mysql_real_escape_string($which) . ' FROM listino');
+      echo $query;
+      $result = mysqli_query($con, $query);
       
       echo '<table border="1">
       <tr>
