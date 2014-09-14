@@ -36,7 +36,7 @@
 
     function generateTable ($which)
     {
-      $query = ('SELECT DISTINCT category FROM listino');
+      $query = ('SELECT DISTINCT ' . $which . ' FROM listino');
       echo $query;
       $result = mysqli_query($con, $query);
       
@@ -48,6 +48,7 @@
       </tr>';
       
       var_dump ($row);
+      var_dump ($result);
       
       while($row = mysqli_fetch_array($result)) 
       {
