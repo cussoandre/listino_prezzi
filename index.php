@@ -21,21 +21,20 @@
     }
     
     generateTable ($sub);
-  
-    $con = mysqli_connect("127.9.180.130:3306","adminbNNmtdG","fkBtFscRAGRI","mysql");
-    $getTable = "SELECT * FROM listino";
-    if (mysqli_connect_errno()) 
-    {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
-    // Check connection
-    if (mysqli_connect_errno()) 
-    {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
 
     function generateTable ($which)
     {
+      $con = mysqli_connect("127.9.180.130:3306","adminbNNmtdG","fkBtFscRAGRI","mysql");
+      $getTable = "SELECT * FROM listino";
+      if (mysqli_connect_errno()) 
+      {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      }
+      // Check connection
+      if (mysqli_connect_errno()) 
+      {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      }
       $query = ('SELECT DISTINCT ' . $which . ' FROM listino');
       echo $query;
       $result = mysqli_query($con, $query);
