@@ -49,9 +49,13 @@
       
       while($row = mysqli_fetch_array($result)) 
       {
+        $prerow = $row["$which"];
+        
+        $tabgen = '<td> <a href = "'. $_SERVER["PHP_SELF"] . '?sub = ' . $prerow . '">' . $prerow . '</td>';
+        
         echo "<tr>";
         
-        echo '<td> <a href="'. $_SERVER["PHP_SELF"] . '?sub=' . $row["$which"] . '">' . $row["$which"] . '</td>';
+        echo $tabgen;
         
         echo "</tr>";
       }
