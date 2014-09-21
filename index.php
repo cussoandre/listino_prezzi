@@ -65,7 +65,7 @@
       while($row = mysqli_fetch_array($result)) 
       {
         $prerow = $row["$layer"];
-        $tabgen = ('<td> <a href = "'. $_SERVER["PHP_SELF"] . '?sub=' . $layers($layer) . '&lay=' . $prerow">' . $prerow . '</td>');
+        $tabgen = ('<td> <a href = "'. $_SERVER["PHP_SELF"] . '?sub=' . $layers($layer) . '&lay=' . $prerow . '">' . $prerow . '</td>');
         
         echo '<tr>' . $tabgen . '</tr>';
       }
