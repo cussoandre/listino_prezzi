@@ -13,7 +13,8 @@
   <h1>This friendly php will help you!</h1>
   <p><?php echo "Hello Mond!";?></p>
   <?php
-    $sub = 'category';
+    $sub = 1;
+    $lay = "category";
     
     if ($_GET['lay'] != null)
     {
