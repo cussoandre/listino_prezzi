@@ -15,15 +15,22 @@
   <?php
     $sub = 'category';
     
-   if ($_GET['sub'] != null)
+    if ($_GET['lay'] != null)
+    {
+      $lay = $_GET['lay'];
+      $sub = 1;
+    }
+    
+    if ($_GET['sub'] != null)
     {
       $sub = $_GET['sub'];
     }
     
-    generateTable ($sub);
+    generateTable ($sub, $lay);
 
-    function generateTable ($which)
+    function generateTable ($which, $layer)
     {
+      
       $con = mysqli_connect("127.9.180.130:3306","adminbNNmtdG","fkBtFscRAGRI","mysql");
       $getTable = "SELECT * FROM listino";
       if (mysqli_connect_errno()) 
@@ -35,14 +42,20 @@
       {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
-      $query = ('SELECT DISTINCT ' . $which . ' FROM listino');
+      
+      $layers = array(
+        "category" => "section"
+        "section" => "product"
+      );
+      
+      $query = ('SELECT DISTINCT ' . $layer . ' FROM listino WHERE ' . $which);
       echo $query;
       $result = mysqli_query($con, $query);
       
       echo '<table border="1">
       <tr>
       
-        <th>' . $which . '</th>
+        <th>' . $layer . '</th>
       
       </tr>';
       
@@ -51,19 +64,10 @@
       
       while($row = mysqli_fetch_array($result)) 
       {
-        $prerow = $row["$which"];
+        $prerow = $row["$layer"];
+        $tabgen = ('<td> <a href = "'. $_SERVER["PHP_SELF"] . '?sub=' . $prerow . '&lay=">' . $prerow . '</td>');
         
-        echo $prerow;
-        
-        $tabgen = '<td> <a href = "'. $_SERVER["PHP_SELF"] . '?sub = ' . $prerow . '">' . $prerow . '</td>';
-        
-        echo $tabgen;
-        
-        echo "<tr>";
-        
-        echo $tabgen;
-        
-        echo "</tr>";
+        echo '<tr>' . $tabgen . '</tr>';
       }
       
       echo "</table>";
