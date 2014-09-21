@@ -44,7 +44,7 @@
       }
       
       $layers = array(
-        "category" => "section"
+        "category" => "section",
         "section" => "product"
       );
       
